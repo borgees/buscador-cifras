@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
+const config = require('./config/config');
+const {sequelize} = require('./models');
+const {User} = require('./models');
 
 const app = express();
 
@@ -9,10 +12,19 @@ app.use(morgan("combined"));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/status", (req, res) => {
-  res.send({
-    message: "Check Status"
-  });
+require('./routes')(app);
+
+sequelize.authenticate().then(() => {
+  console.log('Connection has been established successfully.');
+}).catch(err => {
+  console.error('Unable to connect to the database:', err);
 });
 
-app.listen(process.env.PORT || 8081);
+User.findAll().then(users => {
+  console.log("users: ", users)
+});
+
+sequelize.sync().then(() => {
+  app.listen(config.port);
+  console.log(`Server started on port ${config.port}`)
+});
