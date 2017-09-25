@@ -24,7 +24,7 @@ User.findAll().then(users => {
   console.log("users: ", users)
 });
 
-sequelize.sync().then(() => {
+sequelize.sync({force: false}).then(() => {
   app.listen(config.port);
   console.log(`Server started on port ${config.port}`)
 });

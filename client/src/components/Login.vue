@@ -1,17 +1,13 @@
 <template>
-
-
   <v-layout column>
     <v-flex xs6 offset-xs3>
-      <panel title="Cadastro">
-        <form name="register-form" autocomplete="off">
-          <v-text-field name="email" type="email" v-model="email" label="Email: "></v-text-field>
-          <br>
-          <v-text-field name="password" type="password" v-model="password" label="Senha: "></v-text-field>
-          <br>
-        </form>
+      <panel title="Entrar">
+        <v-text-field name="email" type="email" v-model="email" label="Email: "></v-text-field>
+        <br>
+        <v-text-field name="password" type="password" v-model="password" label="Senha: "></v-text-field>
+        <br>
         <div class="error" v-html="error" />
-        <v-btn dark class="blue" @click="register">Cadastrar</v-btn>
+        <v-btn dark class="blue" @click="login">Entrar</v-btn>
       </panel>
     </v-flex>
   </v-layout>
@@ -30,9 +26,9 @@ export default {
     }
   },
   methods: {
-    async register () {
+    async login () {
       try {
-        const response = await AuthService.register({
+        const response = await AuthService.login({
           email: this.email,
           password: this.password
         })
