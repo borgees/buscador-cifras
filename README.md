@@ -1,6 +1,6 @@
 # Buscador de Cifras
 
-Uma aplicação web para guardar cifras, utilizando tecnologias: Vue.JS e NodeJS.
+Uma aplicação web para guardar cifras, utilizando tecnologias: VueJS e NodeJS.
 
 ### Client
 
