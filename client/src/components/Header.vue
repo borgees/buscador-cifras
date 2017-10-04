@@ -6,7 +6,7 @@
       </span>
     </v-toolbar-title>
     <v-toolbar-items>
-      <v-btn flat dark @click="navigateTo({name: 'songs'})">Procurar</v-btn>
+      <v-btn flat dark @click="navigateTo({name: 'songs'})">Músicas</v-btn>
     </v-toolbar-items>
 
     <v-spacer></v-spacer>

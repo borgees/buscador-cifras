@@ -19,9 +19,15 @@ fs.readdirSync(__dirname).filter((file) =>
   db[model.name] = model;
 });
 
+Object.keys(db).forEach(function (modelName) {
+  if ('associate' in db[modelName]) {
+    db[modelName].associate(db);
+  }
+});
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
 
-console.log("user: ", db.User);
+// console.log("user: ", db.User);

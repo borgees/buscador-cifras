@@ -10,7 +10,7 @@
           <v-text-field name="password" type="password" v-model="password" label="Senha: "></v-text-field>
           <br>
         </form>
-        <div class="error" v-html="error" />
+        <div class="danger-alert" v-html="error" />
         <v-btn dark class="blue" @click="register">Cadastrar</v-btn>
       </panel>
     </v-flex>
@@ -38,6 +38,9 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: "songs"
+        })
       } catch (error) {
         this.error = error.response.data.error
       }
